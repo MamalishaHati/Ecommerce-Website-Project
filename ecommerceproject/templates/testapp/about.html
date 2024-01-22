@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+{% extends "testapp/base.html" %}
+{% load static %}
+
+{% block title %}About{% endblock title %}
+
+
+{% block banner_slide %}
+
+    <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{% static 'images/banner/b1.jpg' %}" class="d-block w-100" alt="banner images">
+            </div>
+            <div class="carousel-item ">
+                <img src="{% static 'images/banner/b2.jpg' %}" class="d-block w-100" alt="banner images">
+            </div>
+            <div class="carousel-item ">
+                <img src="{% static 'images/banner/b3.jpg' %}" class="d-block w-100" alt="banner images">
+            </div>
+        </div>
+    </div>
+
+
+{% endblock banner_slide %}
+
+
+
+{% block main-content %}
+<div class="container mt-3">
+    <br>
+    <h2 class="text-center">About Us</h2>
+    <br>
+    <div class="row container">
+        <p class="fs-4 text-center"> This is a public limited company having its rewistered and corporate office at  Ammerpet city of hyderabad state in india . The copmany was incorporated in the year 2019 and production commenced in 2022 . This is one of thr fastest growing public listed companies in Hyderabad</p>
+    </div>
+        <br><br>
+        <h2 class="text-center">Mission</h2>
+        <br>
+    <div class="row container">
+      <p class="fs-4 text-center">To embrace the right technology to delight out customers Empowering the farmer comminity through out unique 'Relationship Farming Model To anticipate ,understand and respond to our Customers' needs by creating high-quality products and making them availabel througn innovative and convenient channels..
+     </p>
+    </div>
+</div>
+<br><br>
+{% endblock main-content %}

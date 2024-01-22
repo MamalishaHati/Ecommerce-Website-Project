@@ -1,0 +1,59 @@
+.goodnessseccont  img{
+    width: 50%;
+
+}
+
+.row-container{
+    display: flex;
+    gap: 50px;
+    
+
+}
+
+.buttermilk{
+    background-color: #fff;
+    background-image: linear-gradient(#fff7ef,#fff);
+    background-image: -webkit-linear-gradient(#fff7ef,#fff);
+    background-image: -moz-linear-gradient(#fff7ef,#fff);
+    background-image: -o-linear-gradient(#fff7ef,#fff);
+    width: 100%;
+    height: 100%;
+    padding: 50px 50px;
+    border: 1px solid #e2c4a6;
+    padding-bottom: 10px;
+
+}
+.smbg{
+    background-color: #fff;
+    background-image: linear-gradient(rgba(110,69,143,0.1),#fff);
+    background-image: -webkit-linear-gradient(rgba(110,69,143,0.1),#fff);
+    background-image: -moz-linear-gradient(rgba(110,69,143,0.1),#fff);
+    background-image: -o-linear-gradient(rgba(110,69,143,0.1),#fff);
+    width: 100%;
+    height: 100%;
+}
+.curdbgpro{
+    background-color: #fff;
+    background-image: linear-gradient(rgba(22, 35, 43, 0.1),#fff);
+    background-image: -webkit-linear-gradient(rgba(10,77,123,0.1),#fff);
+    background-image: -moz-linear-gradient(rgba(10,77,123,0.1),#fff);
+    background-image: -o-linear-gradient(rgba(10,77,123,0.1),#fff);
+    width: 100%;
+    height: 100%;
+
+    
+}
+
+.mlkpro{
+    color: rgb(74, 70, 70);
+    font-size: 15px;
+    line-height: 20px;
+    margin-bottom: 15px;
+    width: 40%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.goodnesssec a{
+    text-decoration: none;
+}

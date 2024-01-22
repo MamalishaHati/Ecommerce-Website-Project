@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+{% extends "testapp/base.html" %}
+{% load static %}
+
+{% block title %}Checkout{% endblock title %}
+{% block main-content %}
+<div class="container">
+    {% if messages %}
+        {% for msg in messages  %}
+        <div class="alert alert-danger" role='alert'>
+            {{msg}}
+        </div>
+        {% endfor %}
+    {% endif %}
+    <div class="row mt-5">
+        <div class="col-sm-6">
+            <h3>Order Summary</h3>
+            <hr>
+            {% for item in cart_items  %}
+                <div class="card mb-2">
+                    <div class="card-body">
+                        <h4>Product : {{item.product.title}}</h4>
+                        <p>Quantity : {{item.quantity}}</p>
+                        <p class='fw-bold'>Price : {{item.product.discounted_price}}</p>
+                    </div>
+                </div>
+            {% endfor %}
+            <p class='fw-bold'>Total Price + Deliver Charge Rs. 30 = {{totalamount}}</p>
+            <h6>TERM AND CONDITIONS</h6><hr>
+            <small>Information in this web site is believed to be accurate and given in good faith, but it is for the readers to satisfy itself of the suitability for its own particular purpose. Accordingly, Dairy India Digital gives no warranty as to the fitness of the Product for any particular purpose and any implied warranty or condition (statutory or otherwise) is excluded except to the extent that such exclusion is prevented by law. Freedom under Dairy India Patent, Copyright and Design cannot be assumed.
+            </small>
+        </div>
+        <div class="col-sm-4 offset-sm-1">
+            <h3>Select Shiping Address</h3> <hr>
+            <form method = 'post' action="" id="myform">
+                {% csrf_token %}
+                {% for ad in add  %}
+                <div class="card">
+                    <div class="card-body">
+                        <h4>{{ad.name}}</h4>
+                        <p>Mobile Number:{{ad.mobilenumber}}</p>
+                        <p>{{ad.locality}} {{ad.state}} - {{ad.zipcode}}</p>
+                    </div>
+                </div>
+                <div class="form-check mt-2 mb-5">
+                    <input class='form-check-input' type="radio" name='custid' id="custid{{forloop.counter}}"value='ad.id'>
+                    <label class='form-check-label fw-bold' for="custid{{forloop.counter}}"> Address :{{forloop.counter}}</label>
+                </div>
+                {% endfor %}
+
+                <div class="form-check mb-3">
+                    <label for="totamount" class='form-label'>Total Amount</label>
+                    <input type="number" class='form-control' name='totamount' value={{totalamount}} readonly>
+                </div>
+                <div class="text-end">
+                    <!--<button type="submit" class="btn btn-warning mt-3 px=5 fw-bold"> Continue</button> -->
+                    <button id="rxp-button1" type="submit" class="btn btn-warning mt-3 px=5 fw-bold">Payment</button>
+                    <br><br><br><br>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock main-content %}
+<!--
+{% block payment-gateway %}
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+var options = {
+    "key": "rzp_test_o2dQfbokOmUP5a", // Enter the Key ID generated from the Dashboard
+    "amount": "{{razoramount}}", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    "currency ": "INR",
+    "name": "Dairy Product",
+    "description": "Purches Product",
+    //"image": "https://example.com/your_logo",
+    "order_id": "{{order_id}}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+    "handler": function (response){
+        console.log("success")
+        var form = document.getElementById("myform")
+            //alert(response.razorpay_payment_id);
+            //alert(response.razorpay_order_id);
+            //alert(response.razorpay_signature);
+            window.location.href = 'http://127.0.0.1:8000/paymentdone?order_id=${response.razorpay_order_id}&payment_id=${response.razorpay_payment_id}&cust_id=${form.elements["custid"].value}'
+    },
+    "theme": {
+        "color": "#3399cc"
+    }
+};
+var rzp1 = new Razorpay(options);
+rzp1.on('payment.failed', function (response){
+        //alert(response.error.code);
+        alert(response.error.description);
+        //alert(response.error.source);
+        //alert(response.error.step);
+        //alert(response.error.reason);
+        //alert(response.error.metadata.order_id);
+        //alert(response.error.metadata.payment_id);
+});
+document.getElementById('rzp-button1').onclick = function(e){
+    console.log("button clicked")
+    rzp1.open();
+    e.preventDefault();
+}
+</script>
+{% endblock payment-gateway %} -->
